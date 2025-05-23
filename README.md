@@ -6,4 +6,4 @@ API para el control de asistencia del gimnasio Unicatólicos Reloaded GYM.
 
 ```bash
 npm install
-npm run dev
+node index.js

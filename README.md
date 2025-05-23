@@ -1,1 +1,9 @@
-# attendance-api-gym
+# Attendance API GYM
+
+API para el control de asistencia del gimnasio Unicatólicos Reloaded GYM.
+
+## Inicio rápido
+
+```bash
+npm install
+npm run dev

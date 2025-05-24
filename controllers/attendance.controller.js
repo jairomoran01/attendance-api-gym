@@ -5,16 +5,16 @@ exports.registrarAsistencia = async (req, res) => {
   try {
     const { user_id, activity_id, fecha, asistio } = req.body;
 
-    const userRes = await axios.get(`https://api-users.vercel.app/users/${user_id}`);
+    const userRes = await axios.get(`https://attendance-api-gym.vercel.app/users/${user_id}`);
     const user = userRes.data;
     const hoy = new Date().toISOString().split('T')[0];
     if (user.fecha_caducidad_plan < hoy) {
       return res.status(400).json({ mensaje: 'El usuario no tiene un plan activo' });
     }
 
-    const actividadRes = await axios.get(`https://api-activities.vercel.app/activities/${activity_id}`);
+    const actividadRes = await axios.get(`https://attendance-api-gym.vercel.app/activities/${activity_id}`);
     const actividad = actividadRes.data;
-    const asistentesRes = await axios.get(`https://api-activities.vercel.app/activities/${activity_id}/attendees`);
+    const asistentesRes = await axios.get(`https://attendance-api-gym.vercel.app/activities/${activity_id}/attendees`);
     if (asistentesRes.data.length >= actividad.cupos_maximos) {
       return res.status(400).json({ mensaje: 'No hay cupos disponibles' });
     }

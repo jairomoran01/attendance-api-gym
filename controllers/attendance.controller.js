@@ -19,7 +19,7 @@ exports.registrarAsistencia = async (req, res) => {
       return res.status(400).json({ mensaje: 'No hay cupos disponibles' });
     }
 
-    const asistencia = new Attendance({ user_id, activity_id, fecha, asistio });
+    const asistencia = new Asistencia({ user_id, activity_id, fecha, asistio });
     await asistencia.save();
     res.status(201).json(asistencia);
   } catch (error) {
@@ -29,7 +29,7 @@ exports.registrarAsistencia = async (req, res) => {
 
 exports.getAsistenciaPorUsuario = async (req, res) => {
   try {
-    const asistencias = await Attendance.find({ user_id: req.params.userId });
+    const asistencias = await Asistencia.find({ user_id: req.params.userId });
     res.json(asistencias);
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al obtener asistencias por usuario' });
@@ -38,7 +38,7 @@ exports.getAsistenciaPorUsuario = async (req, res) => {
 
 exports.getAsistenciaPorActividad = async (req, res) => {
   try {
-    const asistencias = await Attendance.find({ activity_id: req.params.activityId });
+    const asistencias = await Asistencia.find({ activity_id: req.params.activityId });
     res.json(asistencias);
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al obtener asistencias por actividad' });
@@ -47,7 +47,7 @@ exports.getAsistenciaPorActividad = async (req, res) => {
 
 exports.getAsistenciaPorFecha = async (req, res) => {
   try {
-    const asistencias = await Attendance.find({ fecha: req.params.fecha });
+    const asistencias = await Asistencia.find({ fecha: req.params.fecha });
     res.json(asistencias);
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al obtener asistencias por fecha' });

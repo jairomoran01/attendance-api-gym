@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('api/v1/attendance', attendanceRoutes);
+app.use('/attendance', attendanceRoutes);
 
 //Puerto
 const PORT = process.env.PORT || 3000;

@@ -1,4 +1,4 @@
-const Attendance = require('../models/attendance.model');
+const Asistencia = require('../models/attendance.model');
 const axios = require('axios');
 
 exports.registrarAsistencia = async (req, res) => {

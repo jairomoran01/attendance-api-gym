@@ -1,10 +1,27 @@
 const mongoose = require('mongoose');
 
 const AsistenciaSchema = new mongoose.Schema({
-  user_id: { type: String, required: true },
-  activity_id: { type: String, required: true },
-  fecha: { type: String, required: true },
-  asistio: { type: Boolean, default: true }
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: [true, 'El ID del usuario es obligatorio']
+  },
+  activity_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Activity',
+    required: [true, 'El ID de la actividad es obligatorio']
+  },
+  fecha: {
+    type: Date,
+    required: [true, 'La fecha de asistencia es obligatoria'],
+    default: Date.now
+  },
+  asistio: {
+    type: Boolean,
+    default: true
+  }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Asistencia', AsistenciaSchema);
